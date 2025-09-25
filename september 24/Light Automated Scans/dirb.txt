@@ -1,0 +1,39 @@
+-----------------
+DIRB v2.22    
+By The Dark Raver
+-----------------
+
+START_TIME: Tue Sep 23 02:54:14 2025
+URL_BASE: http://127.0.0.1/dvwa/
+WORDLIST_FILES: /usr/share/dirb/wordlists/common.txt
+
+-----------------
+
+GENERATED WORDS: 4612                                                          
+
+---- Scanning URL: http://127.0.0.1/dvwa/ ----
+==> DIRECTORY: http://127.0.0.1/dvwa/config/                                                   
+==> DIRECTORY: http://127.0.0.1/dvwa/database/                                                 
+==> DIRECTORY: http://127.0.0.1/dvwa/docs/                                                     
+==> DIRECTORY: http://127.0.0.1/dvwa/external/                                                 
++ http://127.0.0.1/dvwa/favicon.ico (CODE:200|SIZE:1406)                                       
++ http://127.0.0.1/dvwa/index.php (CODE:302|SIZE:0)                                            
++ http://127.0.0.1/dvwa/php.ini (CODE:200|SIZE:154)                                            
++ http://127.0.0.1/dvwa/phpinfo.php (CODE:302|SIZE:0)                                          
++ http://127.0.0.1/dvwa/robots.txt (CODE:200|SIZE:25)
+
+scan results :
+
+
+| Type      | Path / URL          | Notes                                                      |
+| --------- | ------------------- | ---------------------------------------------------------- |
+| Directory | `/dvwa/config/`     | Directory listing enabled → may expose config files        |
+| Directory | `/dvwa/database/`   | Directory listing enabled → may expose database files      |
+| Directory | `/dvwa/docs/`       | Directory listing enabled → may expose documentation       |
+| Directory | `/dvwa/external/`   | Directory listing enabled → may contain external resources |
+| File      | `/dvwa/favicon.ico` | Standard favicon file, 200 OK                              |
+| File      | `/dvwa/index.php`   | Redirects (302) to login page                              |
+| File      | `/dvwa/php.ini`     | Exposed PHP configuration file, 200 OK                     |
+| File      | `/dvwa/phpinfo.php` | Redirects (302) to login page; contains PHP info           |
+| File      | `/dvwa/robots.txt`  | 200 OK; can indicate restricted paths for crawlers         |
+

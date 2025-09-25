@@ -1,0 +1,49 @@
+http://127.0.0.1/dvwa/ [302 Found] Apache[2.4.65],
+ Cookies[PHPSESSID,security], Country[RESERVED][ZZ], 
+HTTPServer[Debian Linux][Apache/2.4.65 (Debian)],
+ HttpOnly[PHPSESSID,security], IP[127.0.0.1], PHP[8.4.11],
+ RedirectLocation[login.php],
+ X-Powered-By[PHP/8.4.11] http://127.0.0.1/dvwa/login.php [200 OK] Apache[2.4.65], 
+Cookies[PHPSESSID,security], Country[RESERVED][ZZ], DVWA, HTML5,
+ HTTPServer[Debian Linux][Apache/2.4.65 (Debian)],
+ HttpOnly[PHPSESSID,security], IP[127.0.0.1],
+ PHP[8.4.11], PasswordField[password],
+ Title[Login :: Damn Vulnerable Web Application (DVWA)], X-Powered-By[PHP/8.4.11]
+
+WhatWeb Scan Results – DVWA 
+
+| URL                                                                | Status    | Server / Tech Stack                | Cookies                        | Other Info                                                                          |
+| ------------------------------------------------------------------ | --------- | ---------------------------------- | ------------------------------ | ----------------------------------------------------------------------------------- |
+| [http://127.0.0.1/dvwa/](http://127.0.0.1/dvwa/)                   | 302 Found | Apache/2.4.65 (Debian), PHP/8.4.11 | PHPSESSID, security (HttpOnly) | Redirects to login.php, X-Powered-By: PHP/8.4.11                                    |
+| [http://127.0.0.1/dvwa/login.php](http://127.0.0.1/dvwa/login.php) | 200 OK    | Apache/2.4.65 (Debian), PHP/8.4.11 | PHPSESSID, security (HttpOnly) | DVWA, HTML5, password field present, Title: Login :: DVWA, X-Powered-By: PHP/8.4.11 |
+
+Analysis :
+
+Server / PHP version exposure
+
+Apache 2.4.65 and PHP 8.4.11 are visible.
+
+Could be used by attackers to target version-specific vulnerabilities.
+
+Cookies
+
+PHPSESSID → standard PHP session
+
+security → DVWA security level
+
+Both are set as HttpOnly (good for XSS mitigation).
+
+Redirects
+
+Root /dvwa/ redirects to /dvwa/login.php.
+
+Login page detection
+
+DVWA login page found with password input field.
+
+Could be targeted in brute-force exercises.
+
+Miscellaneous
+
+HTML5 detected, X-Powered-By header shows PHP.
+
